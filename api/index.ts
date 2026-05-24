@@ -8,7 +8,8 @@ export default {
     try {
       url.host = targetHost
 
-      return await fetch(url, req)
+      console.log('fetch to', url.toString())
+      return await fetch(url, req.clone() as Request)
     } catch (e) {
       console.error(e)
       return Response.json({error: 'fetch error'}, {status: 400})
