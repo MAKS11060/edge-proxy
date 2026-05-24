@@ -1,5 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "bunVersion": "1.x",
-  "name": "proxy"
+  "name": "proxy",
+  "rewrites": [
+    {
+      "source": "/:path*",
+      "destination": "/api/index.ts"
+    }
+  ]
 }
