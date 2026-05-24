@@ -10,7 +10,8 @@ export default {
 
       return await fetch(url, req)
     } catch (e) {
-      return Response.json({error: 'Невалидный целевой URL'}, {status: 400})
+      console.error(e)
+      return Response.json({error: 'fetch error'}, {status: 400})
     }
   },
 }
