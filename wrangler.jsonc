@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "tg-bot",
+  "name": "proxy",
   "main": "./src/workerd.ts",
   "compatibility_date": "2026-05-24",
   "observability": {
