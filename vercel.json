@@ -4,6 +4,10 @@
   "name": "proxy",
   "rewrites": [
     {
+      "source": "/",
+      "destination": "/api/index.ts"
+    },
+    {
       "source": "/:path*",
       "destination": "/api/index.ts"
     }
