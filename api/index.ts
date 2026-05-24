@@ -2,14 +2,13 @@ export default {
   async fetch(req: Request): Promise<Response> {
     const url = new URL(req.url)
 
-    const targetHost = req.headers.get('x-proxy-host') ?? url.searchParams.get('proxy')
-    if (!targetHost) return Response.json({status: 'online'})
+    // const targetHost = req.headers.get('x-proxy-host') ?? url.searchParams.get('proxy')
+    // if (!targetHost) return Response.json({status: 'online'})
 
     try {
-      url.host = targetHost
-
-      console.log('fetch to', url.toString())
-      return await fetch(url, req.clone() as Request)
+      const t = new URL(`https://maks11060.keenetic.link${url.pathname + url.search}`)
+      console.log('fetch to', t.toString())
+      return await fetch(t, req.clone() as Request)
     } catch (e) {
       console.error(e)
       return Response.json({error: 'fetch error'}, {status: 400})
