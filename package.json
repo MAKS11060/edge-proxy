@@ -3,17 +3,17 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "deploy": "wrangler deploy",
+    "prepare": "git config core.hooksPath .hooks",
+    "fmt": "dprint fmt",
+    "lint": "dprint check",
     "dev": "wrangler dev",
-    "start": "wrangler dev",
-    "test": "vitest",
+    "deploy": "wrangler deploy",
     "cf-typegen": "wrangler types"
   },
+  "packageManager": "pnpm@11.2.2",
   "devDependencies": {
-    "@cloudflare/vitest-pool-workers": "^0.12.4",
     "@types/node": "^25.9.1",
-    "typescript": "^5.5.2",
-    "vitest": "~3.2.0",
+    "typescript": "^6.0.3",
     "wrangler": "^4.94.0"
   }
 }

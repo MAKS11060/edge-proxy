@@ -1,5 +1,9 @@
 {
-	"files.associations": {
-		"wrangler.json": "jsonc"
-	}
+  "editor.defaultFormatter": "dprint.dprint",
+  "explorer.fileNesting.patterns": {
+    "package.json": ".*, *.json, *.jsonc, *.yaml"
+  },
+  "files.associations": {
+    "wrangler.json": "jsonc"
+  }
 }
