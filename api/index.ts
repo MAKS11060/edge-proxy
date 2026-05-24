@@ -1,26 +1,14 @@
 export default {
   async fetch(req: Request): Promise<Response> {
     const url = new URL(req.url)
-    let targetPath = url.pathname
 
-    if (targetPath === '/') {
-      return Response.json({status: 'online', message: 'Proxy is running.'})
-    }
-
-    if (targetPath.startsWith('/https:/') && !targetPath.startsWith('/https://')) {
-      targetPath = '/https://' + targetPath.slice(8)
-    }
-
-    if (!targetPath.startsWith('/https://')) {
-      return Response.json('error', {status: 400})
-    }
-
-    const cleanUrl = targetPath.slice(1) + url.search
+    const targetHost = req.headers.get('x-proxy-host') ?? url.searchParams.get('proxy')
+    if (!targetHost) return Response.json({status: 'online'})
 
     try {
-      const targetUri = new URL(cleanUrl)
+      url.host = targetHost
 
-      return await fetch(targetUri, req)
+      return await fetch(url, req)
     } catch (e) {
       return Response.json({error: 'Невалидный целевой URL'}, {status: 400})
     }
