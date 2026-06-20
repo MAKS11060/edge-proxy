@@ -4,19 +4,10 @@ export default {
     if (!_uri.pathname.startsWith('/https://')) return Response.json('err')
     const uri = new URL(_uri.pathname.slice(1) + _uri.search)
 
-    console.log(...req.headers.entries())
-    return await fetch(uri, {
-      method: req.method,
-      headers: req.headers,
-      body: req.body,
-      cf: {
-        apps: false,
-        cacheEverything: false,
-        mirage: false,
-        scrapeShield: false,
-      },
-    })
-    return await fetch(uri, req)
+    const res = await fetch(uri, req)
+    console.dir(res)
+
+    return res
 
     // const headers = new Headers()
     // for (const [k, v] of req.headers) {
