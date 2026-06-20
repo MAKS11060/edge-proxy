@@ -5,7 +5,8 @@ export default {
     const uri = new URL(_uri.pathname.slice(1) + _uri.search)
 
     const res = await fetch(uri, req)
-    console.dir(res)
+    console.log(res)
+    console.log(Object.fromEntries(res.headers.entries()))
 
     return res
 
