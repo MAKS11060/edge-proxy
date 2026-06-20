@@ -9,7 +9,12 @@ export default {
       method: req.method,
       headers: req.headers,
       body: req.body,
-      cf: {},
+      cf: {
+        apps: false,
+        cacheEverything: false,
+        mirage: false,
+        scrapeShield: false,
+      },
     })
     return await fetch(uri, req)
 
